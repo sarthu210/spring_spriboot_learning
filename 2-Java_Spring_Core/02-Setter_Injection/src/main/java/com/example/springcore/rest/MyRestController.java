@@ -1,6 +1,7 @@
 package com.example.springcore.rest;
 
-import com.example.springcore.Coach;
+import com.example.springcore.common.Coach;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -9,7 +10,8 @@ public class MyRestController {
 
     private Coach myCoach;
 
-    public MyRestController(Coach theCoah)
+    @Autowired
+    public void setMyCoach(Coach theCoah)
     {
         myCoach = theCoah;
     }
