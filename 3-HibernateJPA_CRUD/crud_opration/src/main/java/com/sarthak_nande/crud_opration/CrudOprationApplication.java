@@ -8,9 +8,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import java.util.List;
+import java.util.Scanner;
 
 @SpringBootApplication
 public class CrudOprationApplication {
+
+	Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
 		SpringApplication.run(CrudOprationApplication.class, args);
@@ -21,17 +24,34 @@ public class CrudOprationApplication {
 		return runner -> {
 //			createNewStudent(studentDao);
 //			readStudentById(studentDao);
-			findAllStudenst(studentDao);
+//			findAllStudenst(studentDao);
+			updateStudent(studentDao);
 		};
 	}
 
-	private void findAllStudenst(StudentDao studentDao) {
-		List<Student> allStudents = studentDao.findAll();
+	private void updateStudent(StudentDao studentDao) {
+		System.out.println("Enter the id of student: ");
+		int id = sc.nextInt();
 
-		for(Student student : allStudents) {
-			System.out.println(student);
-		}
+		Student gotStudent = studentDao.findById(id);
+
+		System.out.println(gotStudent);
+		System.out.println("Updating student....");
+
+		gotStudent.setLast_Name("Nande");
+		studentDao.update(gotStudent);
+
+		System.out.println("Updated Student: " + gotStudent);
+
 	}
+
+//	private void findAllStudenst(StudentDao studentDao) {
+//		List<Student> allStudents = studentDao.findAll();
+//
+//		for(Student student : allStudents) {
+//			System.out.println(student);
+//		}
+//	}
 
 //	private void readStudentById(StudentDao studentDao) {
 //		Student myStudent = studentDao.findById(1);
