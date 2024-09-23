@@ -17,7 +17,12 @@ public class Student {
     @Column(name = "Last_Name")
     private String Last_Name;
 
-    public Student(String first_Name, String last_Name) {
+    public Student(){
+
+    }
+
+    public Student(int _id,String first_Name, String last_Name) {
+        id = _id;
         First_Name = first_Name;
         Last_Name = last_Name;
     }

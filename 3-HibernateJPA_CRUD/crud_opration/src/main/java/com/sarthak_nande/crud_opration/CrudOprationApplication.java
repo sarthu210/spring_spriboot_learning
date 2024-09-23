@@ -7,6 +7,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.List;
+
 @SpringBootApplication
 public class CrudOprationApplication {
 
@@ -18,33 +20,41 @@ public class CrudOprationApplication {
 	public CommandLineRunner commandLineRunner(StudentDao studentDao) {
 		return runner -> {
 //			createNewStudent(studentDao);
-			readStudentById(studentDao);
+//			readStudentById(studentDao);
+			findAllStudenst(studentDao);
 		};
 	}
 
-	private void readStudentById(StudentDao studentDao) {
-		Student myStudent = studentDao.findById(2);
+	private void findAllStudenst(StudentDao studentDao) {
+		List<Student> allStudents = studentDao.findAll();
 
-
-		System.out.println("Student Data: "+ myStudent);
+		for(Student student : allStudents) {
+			System.out.println(student);
+		}
 	}
 
-	private void createNewStudent(StudentDao studentDao) {
-		System.out.println("Creating New Student Object....");
-		Student tempStud = new Student("Madhav","Kamble");
+//	private void readStudentById(StudentDao studentDao) {
+//		Student myStudent = studentDao.findById(1);
+//
+//		System.out.println("Student Data: "+ myStudent);
+//	}
 
-		System.out.println("Saving Student.....");
-		studentDao.save(tempStud);
-
-		System.out.println("Student ID is: " + tempStud.getId());
-
-		int getID = tempStud.getId();
-
-		Student myStudent = studentDao.findById(getID);
-
-
-		System.out.println("Student Data: "+ myStudent);
-
-	}
+//	private void createNewStudent(StudentDao studentDao) {
+//		System.out.println("Creating New Student Object....");
+//		Student tempStud = new Student("Madhav","Kamble");
+//
+//		System.out.println("Saving Student.....");
+//		studentDao.save(tempStud);
+//
+//		System.out.println("Student ID is: " + tempStud.getId());
+//
+//		int getID = tempStud.getId();
+//
+//		Student myStudent = studentDao.findById(getID);
+//
+//
+//		System.out.println("Student Data: "+ myStudent);
+//
+//	}
 
 }
