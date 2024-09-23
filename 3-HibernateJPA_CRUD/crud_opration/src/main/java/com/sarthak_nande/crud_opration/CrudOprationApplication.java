@@ -25,8 +25,17 @@ public class CrudOprationApplication {
 //			createNewStudent(studentDao);
 //			readStudentById(studentDao);
 //			findAllStudenst(studentDao);
-			updateStudent(studentDao);
+//			updateStudent(studentDao);
+			delteStudent(studentDao);
 		};
+	}
+
+	private void delteStudent(StudentDao studentDao) {
+		System.out.println("Enter Your Student ID: ");
+		int id = sc.nextInt();
+		System.out.println("Deleting Student Record...");
+		studentDao.delete(id);
+		System.out.println("Deleted Successfuly....");
 	}
 
 	private void updateStudent(StudentDao studentDao) {
