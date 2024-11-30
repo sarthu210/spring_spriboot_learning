@@ -41,16 +41,5 @@ public class StudentRest {
         return listOfStudents.get(studentId);
     }
 
-    @ExceptionHandler
-    public ResponseEntity<StudentErrorHandeling> excptionHandeler(StudentNotFoundException exc)
-    {
-        StudentErrorHandeling error = new StudentErrorHandeling();
 
-        error.setMessage(exc.getMessage());
-        error.setStatus(HttpStatus.NOT_FOUND.value());
-        error.setTimeStamp(System.currentTimeMillis());
-
-        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
-
-    }
 }
