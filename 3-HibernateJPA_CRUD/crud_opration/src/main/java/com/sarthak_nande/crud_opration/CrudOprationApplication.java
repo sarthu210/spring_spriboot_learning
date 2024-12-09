@@ -25,7 +25,7 @@ public class CrudOprationApplication {
 //			createNewStudent(studentDao);
 //			readStudentById(studentDao);
 //			findAllStudenst(studentDao);
-//			updateStudent(studentDao);
+			updateStudent(studentDao);
 			delteStudent(studentDao);
 		};
 	}
