@@ -45,4 +45,28 @@ public class EmployeeController {
 
         return dbEmployee;
     }
+
+    @PostMapping("/employees/{employeesId}")
+    public String removeEmployee(@PathVariable int employeesId)
+    {
+        Employee theEmployee = employeeServcie.findById(employeesId);
+
+        if(theEmployee == null)
+        {
+            throw new RuntimeException("Employee Id Not Found - " + employeesId);
+        }
+
+        employeeServcie.deleteById(employeesId);
+
+        return "Deleted " + employeesId + "SuccessFully!";
+    }
+
+    @PutMapping("/employees")
+    public Employee updateEmployee(@RequestBody Employee theEmployee)
+    {
+        Employee dbEmployee = employeeServcie.save(theEmployee);
+
+
+        return dbEmployee;
+    }
 }
