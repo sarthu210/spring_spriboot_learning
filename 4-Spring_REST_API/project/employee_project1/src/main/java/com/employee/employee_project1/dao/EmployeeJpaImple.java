@@ -27,4 +27,24 @@ public class EmployeeJpaImple implements EmployeeDAO{
 
         return employees;
     }
+
+    @Override
+    public Employee findById(int id){
+        Employee getEmployee = entityManager.find(Employee.class, id);
+        return getEmployee;
+    }
+
+    @Override
+    public Employee save(Employee theEmployee)
+    {
+        Employee saveEmployee = entityManager.merge(theEmployee);
+        return saveEmployee;
+    }
+
+    @Override
+    public void deleteById(int id)
+    {
+        Employee employee = entityManager.find(Employee.class , id);
+        entityManager.remove(employee);
+    }
 }
