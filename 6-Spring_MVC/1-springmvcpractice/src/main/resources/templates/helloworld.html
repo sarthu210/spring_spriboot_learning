@@ -2,11 +2,12 @@
 <html xmlns:th="http://java.thymeleaf.org">
 
 <head>
-    <title>Basec ThymeLeaf Program</title>
+    <title>Basic ThymeLeaf Program</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
 </head>
 
 <body>
-    <p th:text="'the current time is ' + ${thedate}"></p>
+    <p th:text="'the current time is ' + ${thedate}" class="italic"></p>
 </body>
 
 </html>
